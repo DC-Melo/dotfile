@@ -24,6 +24,7 @@ gpg -–export --armor ${GPGRECIPIENT} > .dc.gpg.public.key
 # start gpg
 systemctl --user status gpg-agent ; gpgconf --kill gpg-agent ; systemctl --user stop gpg-agent ; systemctl --user start gpg-agent ;
 gpg --list-keys ; gpg --list-secret-keys ; gpg --list-public-keys ;
+gpg --edit-key ${GPGRECIPIENT}
 # encrypt
 gpg --recipient ${GPGRECIPIENT} --armor --output ${tmpFile::=~/.zshenv.sh}.gpg  --encrypt ${tmpFile} ;
 gpg --recipient ${GPGRECIPIENT} --armor --output ${tmpFile::=~/.zshfun.sh}.gpg  --encrypt ${tmpFile} ;
